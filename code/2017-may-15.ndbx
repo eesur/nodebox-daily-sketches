@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="add1" position="-4.00,2.00" prototype="math.add"/>
+        <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colorize3" position="-1.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#a4cd3900"/>
+            <port name="stroke" type="color" value="#a4cd39ff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="combine1" position="-2.00,13.00" prototype="list.combine"/>
+        <node name="frame1" position="-1.00,-4.00" prototype="core.frame"/>
+        <node name="last1" position="-4.00,3.00" prototype="list.last"/>
+        <node name="lookup1" position="-6.00,0.00" prototype="data.lookup"/>
+        <node name="lookup2" position="-3.00,0.00" prototype="data.lookup">
+            <port name="key" type="string" value="y"/>
+        </node>
+        <node name="rect1" position="-4.00,-4.00" prototype="corevector.rect"/>
+        <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="scatter1" position="-3.00,-2.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="4"/>
+        </node>
+        <node name="textpath1" position="-1.00,6.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputMonoCompressed-Black"/>
+            <port name="font_size" type="float" value="118.0"/>
+            <port name="width" type="float" value="630.0"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list3" output="colorize3"/>
+        <conn input="lookup1.list" output="scatter1"/>
+        <conn input="lookup2.list" output="scatter1"/>
+        <conn input="colorize3.shape" output="textpath1"/>
+        <conn input="add1.value2" output="lookup2"/>
+        <conn input="add1.value1" output="lookup1"/>
+        <conn input="scatter1.shape" output="rect1"/>
+        <conn input="last1.list" output="add1"/>
+        <conn input="textpath1.text" output="last1"/>
+        <conn input="scatter1.amount" output="frame1"/>
+    </node>
+</ndbx>

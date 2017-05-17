@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="0591ab45-4f3c-4ffc-a0b3-b0cf00c84fd7">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:tresh.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node function="tresh/cook" name="Pt_c_fromPic" outputRange="list" position="1.00,1.00">
+            <port description="" label="" name="picture" range="value" type="string" value="zaal.png" widget="file"/>
+            <port description="" label="" name="seg" range="value" type="int" value="12" widget="int"/>
+        </node>
+        <node name="colorize2" position="-3.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="combine1" position="3.00,13.00" prototype="list.combine"/>
+        <node name="divide1" position="6.00,6.00" prototype="math.divide">
+            <port name="value2" type="float" value="25.0"/>
+        </node>
+        <node name="point1" position="1.00,6.00" prototype="corevector.point"/>
+        <node name="polygon1" position="2.00,9.00" prototype="corevector.polygon">
+            <port name="sides" type="int" value="6"/>
+        </node>
+        <node name="rect2" position="-3.00,9.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="shift1" position="6.00,3.00" prototype="list.shift"/>
+        <node name="subtract1" position="6.00,7.00" prototype="math.subtract">
+            <port name="value1" type="float" value="14.5"/>
+        </node>
+        <node name="take_every1" position="1.00,4.00" prototype="list.take_every">
+            <port name="n" type="int" value="2"/>
+        </node>
+        <node name="take_every2" position="6.00,4.00" prototype="list.take_every">
+            <port name="n" type="int" value="2"/>
+        </node>
+        <node name="translate1" position="6.00,11.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="-400.00,-300.00"/>
+        </node>
+        <conn input="point1.value" output="take_every1"/>
+        <conn input="subtract1.value2" output="divide1"/>
+        <conn input="take_every1.list" output="Pt_c_fromPic"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="polygon1.radius" output="subtract1"/>
+        <conn input="polygon1.position" output="point1"/>
+        <conn input="translate1.shape" output="polygon1"/>
+        <conn input="combine1.list2" output="translate1"/>
+        <conn input="shift1.list" output="Pt_c_fromPic"/>
+        <conn input="take_every2.list" output="shift1"/>
+        <conn input="divide1.value1" output="take_every2"/>
+    </node>
+</ndbx>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colorize3" position="-2.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#a4cd39ff"/>
+            <port name="stroke" type="color" value="#a4cd3917"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="combine1" position="0.00,8.00" prototype="list.combine"/>
+        <node name="count1" position="2.00,-1.00" prototype="list.count"/>
+        <node name="ellipse1" position="-3.00,-1.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="500.0"/>
+            <port name="height" type="float" value="500.0"/>
+        </node>
+        <node name="line1" position="0.00,4.00" prototype="corevector.line"/>
+        <node name="point1" position="-3.00,1.00" prototype="corevector.point"/>
+        <node name="range1" position="2.00,1.00" prototype="math.range">
+            <port name="step" type="float" value="0.25"/>
+        </node>
+        <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="resample1" position="-3.00,0.00" prototype="corevector.resample">
+            <port name="length" type="float" value="96.0"/>
+            <port name="points" type="int" value="4"/>
+        </node>
+        <node name="slice1" position="0.00,3.00" prototype="list.slice">
+            <port name="size" type="int" value="90"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list3" output="colorize3"/>
+        <conn input="resample1.shape" output="ellipse1"/>
+        <conn input="point1.value" output="resample1"/>
+        <conn input="line1.point1" output="slice1"/>
+        <conn input="slice1.start_index" output="range1"/>
+        <conn input="line1.point2" output="point1"/>
+        <conn input="colorize3.shape" output="line1"/>
+        <conn input="slice1.list" output="point1"/>
+        <conn input="range1.end" output="count1"/>
+        <conn input="count1.list" output="point1"/>
+    </node>
+</ndbx>

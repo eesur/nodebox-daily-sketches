@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="6.00,7.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#ee3124ff"/>
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="colorize2" position="-1.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="combine1" position="3.00,10.00" prototype="list.combine"/>
+        <node name="convert_range1" position="5.00,1.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="80.0"/>
+            <port name="target_end" type="float" value="80.0"/>
+        </node>
+        <node name="copy1" position="2.00,3.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="177"/>
+            <port name="translate" type="point" value="2.00,0.00"/>
+            <port name="rotate" type="float" value="12.0"/>
+        </node>
+        <node name="frame1" position="4.00,-1.00" prototype="core.frame"/>
+        <node name="rect1" position="0.00,1.00" prototype="corevector.rect">
+            <port name="position" type="point" value="200.00,0.00"/>
+            <port name="width" type="float" value="90.0"/>
+            <port name="height" type="float" value="240.0"/>
+        </node>
+        <node name="rect2" position="-2.00,7.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="reflect2" position="1.00,5.00" prototype="corevector.reflect">
+            <port name="angle" type="float" value="90.0"/>
+        </node>
+        <conn input="copy1.shape" output="rect1"/>
+        <conn input="reflect2.shape" output="copy1"/>
+        <conn input="convert_range1.value" output="frame1"/>
+        <conn input="copy1.copies" output="convert_range1"/>
+        <conn input="colorize1.shape" output="reflect2"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="combine1.list1" output="colorize2"/>
+    </node>
+</ndbx>

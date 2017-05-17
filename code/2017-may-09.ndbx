@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="combine1" position="0.00,8.00" prototype="list.combine"/>
+        <node name="freehand1" position="-3.00,1.00" prototype="corevector.freehand">
+            <port name="path" type="string" value="M-110.05,-144.21  -107.78,-144.21  -102.11,-144.21  -95.31,-144.21  -86.24,-144.21  -80.57,-144.21  -76.03,-148.74  -71.50,-157.81  -71.50,-161.21  -71.50,-168.02  -73.77,-177.09  -79.44,-180.49  -96.44,-185.03  -106.65,-186.16  -116.85,-186.16  -163.34,-169.15  -175.82,-155.54  -180.35,-143.07  -179.22,-131.73  -150.87,-119.26  -132.73,-118.13  -112.32,-130.60  -94.18,-164.62  -91.91,-177.09  -89.64,-183.89  -89.64,-182.76  -89.64,-174.82  -107.78,-129.47  -133.86,-70.50  -138.40,-46.69  -138.40,-19.48  -128.19,12.27  -119.12,38.35  -105.52,61.03  -93.04,78.03  -69.23,98.44  -36.35,116.59  1.07,132.46  28.28,136.99  30.55,138.13 "/>
+        </node>
+        <node name="network1" position="-3.00,4.00" prototype="core.network" renderedChild="colorize3">
+            <node name="colorize3" position="-7.00,3.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#fdbb3000"/>
+                <port name="stroke" type="color" value="#fdbb30ff"/>
+                <port name="strokeWidth" type="float" value="2.0"/>
+            </node>
+            <node name="copy1" position="-7.00,1.00" prototype="corevector.copy">
+                <port name="copies" type="int" value="12"/>
+                <port name="rotate" type="float" value="30.0"/>
+            </node>
+            <node name="reflect1" position="-7.00,0.00" prototype="corevector.reflect">
+                <port name="angle" type="float" value="90.0"/>
+            </node>
+            <port childReference="reflect1.angle" description="The angle at which to mirror the shape." label="" name="angle" range="value" type="float" value="90.0" widget="float"/>
+            <port childReference="copy1.rotate" description="The amount to rotate each copy." label="" name="rotate" range="value" type="float" value="30.0" widget="float"/>
+            <port childReference="copy1.copies" description="The amount of copies." label="" min="1.0" name="copies" range="value" type="int" value="12" widget="int"/>
+            <port childReference="colorize3.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="fill" range="value" type="color" value="#fdbb3000" widget="color"/>
+            <port childReference="colorize3.stroke" description="The new stroke color." label="" name="stroke" range="value" type="color" value="#fdbb30ff" widget="color"/>
+            <port childReference="reflect1.shape" description="The input shape." label="" name="input" range="value" type="geometry" widget="none"/>
+            <conn input="copy1.shape" output="reflect1"/>
+            <conn input="colorize3.shape" output="copy1"/>
+        </node>
+        <node name="network2" position="1.00,4.00" prototype="core.network" renderedChild="colorize3">
+            <node name="colorize3" position="-7.00,3.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#a4cd3900"/>
+                <port name="stroke" type="color" value="#a4cd39ff"/>
+                <port name="strokeWidth" type="float" value="2.0"/>
+            </node>
+            <node name="copy1" position="-7.00,1.00" prototype="corevector.copy">
+                <port name="copies" type="int" value="4"/>
+                <port name="rotate" type="float" value="60.0"/>
+            </node>
+            <node name="reflect1" position="-7.00,0.00" prototype="corevector.reflect">
+                <port name="angle" type="float" value="90.0"/>
+            </node>
+            <port childReference="reflect1.angle" description="The angle at which to mirror the shape." label="" name="angle" range="value" type="float" value="90.0" widget="float"/>
+            <port childReference="copy1.rotate" description="The amount to rotate each copy." label="" name="rotate" range="value" type="float" value="60.0" widget="float"/>
+            <port childReference="copy1.copies" description="The amount of copies." label="" min="1.0" name="copies" range="value" type="int" value="4" widget="int"/>
+            <port childReference="colorize3.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="fill" range="value" type="color" value="#a4cd3900" widget="color"/>
+            <port childReference="colorize3.stroke" description="The new stroke color." label="" name="stroke" range="value" type="color" value="#a4cd39ff" widget="color"/>
+            <port childReference="reflect1.shape" description="The input shape." label="" name="input" range="value" type="geometry" widget="none"/>
+            <conn input="copy1.shape" output="reflect1"/>
+            <conn input="colorize3.shape" output="copy1"/>
+        </node>
+        <node name="network3" position="5.00,4.00" prototype="core.network" renderedChild="colorize3">
+            <node name="colorize3" position="-7.00,3.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#a4cd3900"/>
+                <port name="stroke" type="color" value="#130c0eff"/>
+                <port name="strokeWidth" type="float" value="2.0"/>
+            </node>
+            <node name="copy1" position="-7.00,1.00" prototype="corevector.copy">
+                <port name="copies" type="int" value="3"/>
+                <port name="rotate" type="float" value="80.0"/>
+            </node>
+            <node name="reflect1" position="-7.00,0.00" prototype="corevector.reflect">
+                <port name="angle" type="float" value="90.0"/>
+            </node>
+            <port childReference="reflect1.angle" description="The angle at which to mirror the shape." label="" name="angle" range="value" type="float" value="90.0" widget="float"/>
+            <port childReference="copy1.rotate" description="The amount to rotate each copy." label="" name="rotate" range="value" type="float" value="80.0" widget="float"/>
+            <port childReference="copy1.copies" description="The amount of copies." label="" min="1.0" name="copies" range="value" type="int" value="3" widget="int"/>
+            <port childReference="colorize3.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="fill" range="value" type="color" value="#a4cd3900" widget="color"/>
+            <port childReference="colorize3.stroke" description="The new stroke color." label="" name="stroke" range="value" type="color" value="#130c0eff" widget="color"/>
+            <port childReference="reflect1.shape" description="The input shape." label="" name="input" range="value" type="geometry" widget="none"/>
+            <conn input="copy1.shape" output="reflect1"/>
+            <conn input="colorize3.shape" output="copy1"/>
+        </node>
+        <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list2" output="network1"/>
+        <conn input="network1.input" output="freehand1"/>
+        <conn input="network2.input" output="freehand1"/>
+        <conn input="combine1.list3" output="network2"/>
+        <conn input="network3.input" output="freehand1"/>
+        <conn input="combine1.list4" output="network3"/>
+    </node>
+</ndbx>

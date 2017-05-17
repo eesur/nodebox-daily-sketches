@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize2" position="-4.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="combine1" position="0.00,8.00" prototype="list.combine"/>
+        <node name="convert_range1" position="5.00,1.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="10.0"/>
+        </node>
+        <node name="count1" position="0.00,-1.00" prototype="list.count"/>
+        <node name="frame1" position="4.00,-1.00" prototype="core.frame"/>
+        <node name="grid1" position="-1.00,-3.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="7"/>
+            <port name="rows" type="int" value="1"/>
+            <port name="width" type="float" value="580.0"/>
+            <port name="height" type="float" value="247.0"/>
+        </node>
+        <node name="network1" position="-2.00,3.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-4.00,2.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#ee3124ff"/>
+                <port name="stroke" type="color" value="#ee3124ff"/>
+            </node>
+            <node name="grid1" position="-4.00,-2.00" prototype="corevector.grid">
+                <port name="columns" type="int" value="4"/>
+                <port name="rows" type="int" value="13"/>
+                <port name="width" type="float" value="45.0"/>
+                <port name="height" type="float" value="160.0"/>
+            </node>
+            <node name="pick1" position="-4.00,0.00" prototype="list.pick">
+                <port name="amount" type="int" value="34"/>
+            </node>
+            <node name="rect1" position="-4.00,1.00" prototype="corevector.rect">
+                <port name="width" type="float" value="16.0"/>
+                <port name="height" type="float" value="15.0"/>
+            </node>
+            <port childReference="grid1.position" description="The center point of the grid." label="" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="pick1.amount" description="The amount of items to pick." label="" name="amount" range="value" type="int" value="34" widget="int"/>
+            <port childReference="colorize1.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="fill" range="value" type="color" value="#ee3124ff" widget="color"/>
+            <conn input="pick1.list" output="grid1"/>
+            <conn input="rect1.position" output="pick1"/>
+            <conn input="colorize1.shape" output="rect1"/>
+        </node>
+        <node name="random_numbers1" position="0.00,1.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="45"/>
+            <port name="end" type="float" value="32.0"/>
+            <port name="seed" type="int" value="7"/>
+        </node>
+        <node name="rect2" position="-4.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <conn input="convert_range1.value" output="frame1"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="network1.position" output="grid1"/>
+        <conn input="network1.amount" output="random_numbers1"/>
+        <conn input="combine1.list2" output="network1"/>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+    </node>
+</ndbx>
