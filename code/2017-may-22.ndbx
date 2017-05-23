@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="d5d06d74-6b28-4690-a95f-b14d1a72b3fa">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="4.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ee31240c"/>
+            <port name="stroke" type="color" value="#fdbb30ff"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize2" position="-5.00,16.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="combine1" position="2.00,14.00" prototype="list.combine"/>
+        <node name="copy1" position="-3.00,12.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="2"/>
+        </node>
+        <node name="line1" position="4.00,9.00" prototype="corevector.line"/>
+        <node name="lookup1" position="2.00,2.00" prototype="data.lookup"/>
+        <node name="lookup2" position="5.00,2.00" prototype="data.lookup">
+            <port name="key" type="string" value="y"/>
+        </node>
+        <node name="make_numbers1" position="-1.00,2.00" prototype="math.make_numbers">
+            <port name="string" type="string" value="1, 2, 3, 4, 5, 6, 7"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="make_point1" position="7.00,7.00" prototype="corevector.make_point"/>
+        <node name="make_point2" position="0.00,7.00" prototype="corevector.make_point"/>
+        <node name="network2" position="-4.00,10.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-5.00,11.00" prototype="corevector.colorize">
+                <port name="stroke" type="color" value="#fdbb30ff"/>
+                <port name="strokeWidth" type="float" value="1.0"/>
+            </node>
+            <node name="line2" position="-5.00,9.00" prototype="corevector.line"/>
+            <node name="make_point3" position="-9.00,7.00" prototype="corevector.make_point"/>
+            <node name="slice3" position="-8.00,5.00" prototype="list.slice">
+                <port name="start_index" type="int" value="3"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <port childReference="line2.point2" description="The ending point of the line." label="" name="point2" range="value" type="point" value="100.00,100.00" widget="point"/>
+            <port childReference="slice3.list" description="The input list." label="" name="list" range="list" type="list" widget="none"/>
+            <port childReference="slice3.start_index" description="The starting index in the list." label="" min="0.0" name="start_index" range="value" type="int" value="3" widget="int"/>
+            <conn input="make_point3.x" output="slice3"/>
+            <conn input="line2.point1" output="make_point3"/>
+            <conn input="colorize1.shape" output="line2"/>
+        </node>
+        <node name="network3" position="0.00,11.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-5.00,11.00" prototype="corevector.colorize">
+                <port name="stroke" type="color" value="#fdbb30ff"/>
+                <port name="strokeWidth" type="float" value="1.0"/>
+            </node>
+            <node name="line2" position="-5.00,9.00" prototype="corevector.line"/>
+            <node name="make_point3" position="-9.00,7.00" prototype="corevector.make_point"/>
+            <node name="slice3" position="-8.00,5.00" prototype="list.slice">
+                <port name="start_index" type="int" value="1"/>
+                <port name="size" type="int" value="1"/>
+            </node>
+            <port childReference="line2.point2" description="The ending point of the line." label="" name="point2" range="value" type="point" value="100.00,100.00" widget="point"/>
+            <port childReference="slice3.list" description="The input list." label="" name="list" range="list" type="list" widget="none"/>
+            <port childReference="slice3.start_index" description="The starting index in the list." label="" min="0.0" name="start_index" range="value" type="int" value="1" widget="int"/>
+            <conn input="make_point3.x" output="slice3"/>
+            <conn input="line2.point1" output="make_point3"/>
+            <conn input="colorize1.shape" output="line2"/>
+        </node>
+        <node name="rect1" position="0.00,0.00" prototype="corevector.rect">
+            <port name="width" type="float" value="400.0"/>
+            <port name="height" type="float" value="400.0"/>
+        </node>
+        <node name="rect2" position="-5.00,15.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="scatter1" position="4.00,0.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="50"/>
+            <port name="seed" type="int" value="54"/>
+        </node>
+        <node name="slice1" position="1.00,4.00" prototype="list.slice">
+            <port name="size" type="int" value="1"/>
+        </node>
+        <node name="slice2" position="6.00,4.00" prototype="list.slice">
+            <port name="size" type="int" value="1"/>
+        </node>
+        <conn input="scatter1.shape" output="rect1"/>
+        <conn input="lookup1.list" output="scatter1"/>
+        <conn input="lookup2.list" output="scatter1"/>
+        <conn input="colorize1.shape" output="line1"/>
+        <conn input="slice1.list" output="lookup1"/>
+        <conn input="make_point2.x" output="slice1"/>
+        <conn input="slice2.list" output="lookup2"/>
+        <conn input="make_point2.y" output="slice2"/>
+        <conn input="make_point1.x" output="lookup1"/>
+        <conn input="make_point1.y" output="lookup2"/>
+        <conn input="line1.point2" output="make_point1"/>
+        <conn input="line1.point1" output="make_point2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="network2.point2" output="make_point1"/>
+        <conn input="network2.list" output="lookup1"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="network3.point2" output="make_point1"/>
+        <conn input="network3.list" output="lookup1"/>
+        <conn input="combine1.list4" output="network3"/>
+        <conn input="copy1.shape" output="network2"/>
+        <conn input="combine1.list3" output="copy1"/>
+    </node>
+</ndbx>
