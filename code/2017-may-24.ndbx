@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="color2" position="3.00,8.00" prototype="color.color">
+            <port name="color" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="colorize2" position="-7.00,15.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#eeeeeeff"/>
+        </node>
+        <node name="colorize3" position="-2.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0e00"/>
+            <port name="stroke" type="color" value="#ccccccff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize4" position="2.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ee3124e9"/>
+        </node>
+        <node name="combine1" position="-2.00,14.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-1.00,8.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="500.0"/>
+        </node>
+        <node name="convert_range2" position="5.00,10.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="500.0"/>
+        </node>
+        <node name="ellipse1" position="-2.00,10.00" prototype="corevector.ellipse"/>
+        <node name="ellipse2" position="2.00,11.00" prototype="corevector.ellipse"/>
+        <node name="integer1" position="5.00,13.00" prototype="math.integer"/>
+        <node name="pick1" position="6.00,7.00" prototype="list.pick">
+            <port name="amount" type="int" value="1"/>
+            <port name="seed" type="int" value="50"/>
+        </node>
+        <node name="random_numbers1" position="6.00,5.00" prototype="math.random_numbers"/>
+        <node name="range1" position="-3.00,6.00" prototype="math.range">
+            <port name="end" type="float" value="125.0"/>
+            <port name="step" type="float" value="25.0"/>
+        </node>
+        <node name="rect2" position="-7.00,14.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="sqrt1" position="-6.00,8.00" prototype="math.sqrt"/>
+        <node name="sqrt2" position="6.00,8.00" prototype="math.sqrt"/>
+        <node name="textpath1" position="3.00,15.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputSansCompressed-Light"/>
+            <port name="font_size" type="float" value="72.0"/>
+            <port name="position" type="point" value="0.00,13.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="colorize3.shape" output="ellipse1"/>
+        <conn input="sqrt1.value" output="range1"/>
+        <conn input="convert_range1.value" output="sqrt1"/>
+        <conn input="ellipse1.width" output="convert_range1"/>
+        <conn input="ellipse1.height" output="convert_range1"/>
+        <conn input="ellipse2.width" output="convert_range2"/>
+        <conn input="ellipse2.height" output="convert_range2"/>
+        <conn input="colorize4.shape" output="ellipse2"/>
+        <conn input="combine1.list3" output="colorize4"/>
+        <conn input="pick1.list" output="random_numbers1"/>
+        <conn input="sqrt2.value" output="pick1"/>
+        <conn input="convert_range2.value" output="sqrt2"/>
+        <conn input="combine1.list2" output="colorize3"/>
+        <conn input="integer1.value" output="pick1"/>
+        <conn input="textpath1.text" output="integer1"/>
+        <conn input="combine1.list4" output="textpath1"/>
+    </node>
+</ndbx>
