@@ -4,6 +4,10 @@ area for me to store/share sketches using [nodebox 3](https://www.nodebox.net/no
 
 ------------------
 
+view via gitHub pages: [sketches index](https://eesur.github.io/nodebox-daily-sketches/)
+
+------------------
+
 **code** is a folder containing nodebox source files
 **img-refs** is a folder of corresponding images for each sketch
 
