@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="-3.00,14.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30f7"/>
+        </node>
+        <node name="colorize2" position="-7.00,15.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="combine1" position="-3.00,15.00" prototype="list.combine"/>
+        <node name="find_radius" position="-2.00,10.00" prototype="core.network" renderedChild="divide3">
+            <node name="divide1" position="-12.00,-19.00" prototype="math.divide">
+                <port name="value1" type="float" value="180.0"/>
+            </node>
+            <node name="divide3" position="-15.00,-13.00" prototype="math.divide"/>
+            <node name="multiply1" position="-12.00,-16.00" prototype="math.multiply">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="number1" position="-15.00,-21.00" prototype="math.number">
+                <port name="value" type="float" value="23.0"/>
+            </node>
+            <node name="number2" position="-12.00,-21.00" prototype="math.number">
+                <port name="value" type="float" value="3.0"/>
+            </node>
+            <node name="radians1" position="-12.00,-18.00" prototype="math.radians"/>
+            <node name="sin1" position="-12.00,-17.00" prototype="math.sin"/>
+            <port childReference="number1.value" description="" label="" name="side lenth" range="value" type="float" value="23.0" widget="float"/>
+            <port childReference="number2.value" description="" label="" name="number of sides" range="value" type="float" value="3.0" widget="float"/>
+            <conn input="multiply1.value1" output="sin1"/>
+            <conn input="divide3.value2" output="multiply1"/>
+            <conn input="divide3.value1" output="number1"/>
+            <conn input="divide1.value2" output="number2"/>
+            <conn input="radians1.degrees" output="divide1"/>
+            <conn input="sin1.value" output="radians1"/>
+        </node>
+        <node name="grid1" position="-6.00,9.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="4"/>
+            <port name="rows" type="int" value="4"/>
+            <port name="width" type="float" value="581.0"/>
+            <port name="height" type="float" value="421.0"/>
+            <port name="position" type="point" value="-9.00,-24.00"/>
+        </node>
+        <node name="polygon1" position="-5.00,12.00" prototype="corevector.polygon"/>
+        <node name="range1" position="-1.00,7.00" prototype="math.range">
+            <port name="start" type="float" value="3.0"/>
+            <port name="end" type="float" value="19.0"/>
+        </node>
+        <node name="rect2" position="-7.00,14.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="polygon1.position" output="grid1"/>
+        <conn input="polygon1.radius" output="find_radius"/>
+        <conn input="find_radius.number of sides" output="range1"/>
+        <conn input="polygon1.sides" output="range1"/>
+        <conn input="colorize1.shape" output="polygon1"/>
+    </node>
+</ndbx>
