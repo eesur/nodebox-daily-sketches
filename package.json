@@ -1,0 +1,27 @@
+{
+  "name": "nodebox-daily-sketches",
+  "version": "1.0.0",
+  "description": "area for me to store/share sketches using [nodebox 3](https://www.nodebox.net/node/)",
+  "main": "index.js",
+  "scripts": {
+    "tree": "node directory-tree.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eesur/nodebox-daily-sketches.git"
+  },
+  "keywords": [
+    "nodeBox"
+  ],
+  "author": "eesur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eesur/nodebox-daily-sketches/issues"
+  },
+  "homepage": "https://github.com/eesur/nodebox-daily-sketches#readme",
+  "dependencies": {
+    "directory-tree": "^2.0.0",
+    "jsonfile": "^3.0.0"
+  }
+}

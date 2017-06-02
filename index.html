@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EESUR | NODEBOX SKETCHES</title>
+<!-- eesur.com -->
+<meta charset="utf-8">
+
+
+<!-- CSS  -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+<link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, Consolas, monaco, monospace;
+    font-weight: 500;
+    line-height: 1.5;
+    background-color: #a5a6a9;
+    color: #dfe0e2;
+  }
+  a {
+        text-decoration: none;
+  }
+  .disabled {
+      pointer-events: none;
+      opacity: 0.4;
+  }
+  .max-width-1600 {
+    max-width: 1600px;
+  }
+  .img-wrap {
+    /*min-height: 230px;*/
+    background: #dfe0e2;
+    margin-right: 15px;
+    padding-top: 20px;
+    position: relative;
+  }
+  .img-wrap:hover {
+    background: #f45844;
+  }
+  a .img-wrap figcaption {
+    text-decoration: none;
+    color: #2f292b;
+  }
+  .img-wrap figcaption {
+    position: relative;
+    color: #2f292b;
+    margin-top: 10px;
+    padding-bottom: 15px;
+  }
+  .img-wrap figcaption::after { 
+      content: '→'; /*&#8594;*/
+      position: absolute;
+      right: -20px;
+      top: 2px;
+      color: #eee;
+  }
+
+</style>
+<body>
+    <header class="max-width-4 mx-auto">
+        <h1>Daily NodeBox 3 Sketches</h1>
+        <p class="pb3 max-width-3">Img references for sketches built using NodeBox platform. <br>
+        Each img links to the NodeBox code file (XML)</p>
+    </header>
+
+    <div class="flex flex-wrap max-width-1600 mx-auto my4 js-ndbx-links"></div>
+
+
+<script src="//d3js.org/d3.v4.min.js"></script> 
+<script>
+(function() {
+    d3.queue()
+        .defer(d3.json, 'codeTree.json')
+        .defer(d3.json, 'imgTree.json')
+        .await(ready);
+
+    function ready(error, codeTree, imgTree) {
+        if (error) throw error;
+        console.log(codeTree[0])
+        console.log(imgTree[0])
+
+        var figure = d3.select('.js-ndbx-links')
+            .selectAll('a')
+            .data(imgTree)
+            .enter().append('a')
+            .attr('class', 'block col-6')
+            .attr('href', function(d, i) {
+                // use the index to ref the code data
+                return codeTree[i].path;
+            })
+            .append('div')
+            .attr('class', 'img-wrap')
+            .append('figure')
+        figure.append('img')
+            .attr('class', 'rounded fit')
+            .attr('src', function(d) {
+                return d.path;
+            })
+        figure.append('figcaption')
+            .attr('class', 'center')
+            .text(function(d) {
+                // return the name minus the extension
+                var str = d.name;
+                return str.substring(0, str.length-4);
+            })
+    }
+})()
+</script>
+
+</body>
+</html>
