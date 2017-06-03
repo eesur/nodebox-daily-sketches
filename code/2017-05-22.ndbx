@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ndbx formatVersion="21" type="file" uuid="d5d06d74-6b28-4690-a95f-b14d1a72b3fa">
     <property name="canvasHeight" value="600"/>
-    <property name="canvasWidth" value="600"/>
+    <property name="canvasWidth" value="800"/>
     <property name="canvasX" value="0"/>
     <property name="canvasY" value="0"/>
     <node name="root" prototype="core.network" renderedChild="combine1">
