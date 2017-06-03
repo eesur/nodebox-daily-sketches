@@ -1,5 +1,12 @@
 [
   {
+    "path": "img-refs/2017-06-02.gif",
+    "name": "2017-06-02.gif",
+    "size": 46944,
+    "extension": ".gif",
+    "type": "file"
+  },
+  {
     "path": "img-refs/2017-06-01.png",
     "name": "2017-06-01.png",
     "size": 16181,
@@ -51,14 +58,14 @@
   {
     "path": "img-refs/2017-05-23.png",
     "name": "2017-05-23.png",
-    "size": 551116,
+    "size": 610675,
     "extension": ".png",
     "type": "file"
   },
   {
     "path": "img-refs/2017-05-22.png",
     "name": "2017-05-22.png",
-    "size": 58163,
+    "size": 60513,
     "extension": ".png",
     "type": "file"
   },
