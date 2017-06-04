@@ -22,7 +22,7 @@
             <port name="height" type="float" value="600.0"/>
         </node>
         <node name="slice1" position="-9.00,5.00" prototype="list.slice">
-            <port name="size" type="int" value="1"/>
+            <port name="size" type="int" value="0"/>
         </node>
         <node name="slice2" position="-6.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="1"/>
@@ -30,11 +30,11 @@
         </node>
         <node name="slice3" position="-3.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="2"/>
-            <port name="size" type="int" value="1"/>
+            <port name="size" type="int" value="0"/>
         </node>
         <node name="slice4" position="0.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="3"/>
-            <port name="size" type="int" value="1"/>
+            <port name="size" type="int" value="0"/>
         </node>
         <node name="slice5" position="3.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="4"/>
@@ -42,11 +42,11 @@
         </node>
         <node name="slice6" position="6.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="5"/>
-            <port name="size" type="int" value="1"/>
+            <port name="size" type="int" value="0"/>
         </node>
         <node name="slice7" position="9.00,5.00" prototype="list.slice">
             <port name="start_index" type="int" value="6"/>
-            <port name="size" type="int" value="1"/>
+            <port name="size" type="int" value="0"/>
         </node>
         <node name="ungroup1" position="-2.00,3.00" prototype="corevector.ungroup"/>
         <conn input="colorize2.shape" output="rect2"/>
