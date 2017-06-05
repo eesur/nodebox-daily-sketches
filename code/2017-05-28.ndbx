@@ -6,7 +6,7 @@
     <property name="canvasY" value="0"/>
     <node name="root" prototype="core.network" renderedChild="combine1">
         <node name="characters1" position="-2.00,3.00" prototype="string.characters">
-            <port name="string" type="string" value="hello"/>
+            <port name="string" type="string" value="hola"/>
         </node>
         <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#130c0eff"/>
@@ -14,14 +14,14 @@
         <node name="combine1" position="-3.00,9.00" prototype="list.combine"/>
         <node name="letter" position="-2.00,7.00" prototype="core.network" renderedChild="colorize3">
             <node name="colorize3" position="-6.00,5.00" prototype="corevector.colorize">
-                <port name="fill" type="color" value="#ee312400"/>
-                <port name="stroke" type="color" value="#fdbb307d"/>
-                <port name="strokeWidth" type="float" value="1.0"/>
+                <port name="fill" type="color" value="#00b0ddff"/>
+                <port name="stroke" type="color" value="#00b0ddff"/>
+                <port name="strokeWidth" type="float" value="2.0"/>
             </node>
             <node name="line1" position="-6.00,4.00" prototype="corevector.line"/>
             <node name="point1" position="-6.00,1.00" prototype="corevector.point"/>
             <node name="resample1" position="-6.00,0.00" prototype="corevector.resample">
-                <port name="length" type="float" value="12.0"/>
+                <port name="length" type="float" value="15.0"/>
                 <port name="points" type="int" value="2"/>
             </node>
             <node name="shift1" position="-3.00,3.00" prototype="list.shift">
@@ -30,12 +30,12 @@
             <node name="textpath1" position="-6.00,-1.00" prototype="corevector.textpath">
                 <port name="text" type="string" value="h"/>
                 <port name="font_name" type="string" value="InputMonoCondensed-Black"/>
-                <port name="font_size" type="float" value="338.0"/>
+                <port name="font_size" type="float" value="588.0"/>
                 <port name="position" type="point" value="-297.00,89.00"/>
             </node>
             <port childReference="textpath1.text" description="The input text." label="" name="text" range="value" type="string" value="h" widget="string"/>
-            <port childReference="resample1.length" description="The maximum length of each segment." label="" min="1.0" name="length" range="value" type="float" value="12.0" widget="float"/>
-            <port childReference="textpath1.font_size" description="The size of the font." label="" name="font_size" range="value" type="float" value="338.0" widget="float"/>
+            <port childReference="resample1.length" description="The maximum length of each segment." label="" min="1.0" name="length" range="value" type="float" value="15.0" widget="float"/>
+            <port childReference="textpath1.font_size" description="The size of the font." label="" name="font_size" range="value" type="float" value="588.0" widget="float"/>
             <port childReference="textpath1.position" description="The center point of the text." label="" name="position" range="value" type="point" value="-297.00,89.00" widget="point"/>
             <conn input="resample1.shape" output="textpath1"/>
             <conn input="point1.value" output="resample1"/>
@@ -45,12 +45,12 @@
             <conn input="line1.point2" output="shift1"/>
         </node>
         <node name="make_point1" position="2.00,5.00" prototype="corevector.make_point">
-            <port name="y" type="float" value="99.0"/>
+            <port name="y" type="float" value="189.0"/>
         </node>
         <node name="range1" position="2.00,3.00" prototype="math.range">
-            <port name="start" type="float" value="-304.0"/>
-            <port name="end" type="float" value="400.0"/>
-            <port name="step" type="float" value="152.0"/>
+            <port name="start" type="float" value="-255.0"/>
+            <port name="end" type="float" value="338.0"/>
+            <port name="step" type="float" value="170.0"/>
         </node>
         <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
             <port name="width" type="float" value="800.0"/>
