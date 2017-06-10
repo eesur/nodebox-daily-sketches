@@ -61,6 +61,7 @@
         <conn input="combine1.list3" output="translate2"/>
         <conn input="colorize3.shape" output="ellipse1"/>
         <conn input="translate2.shape" output="colorize3"/>
-        <conn input="colorize3.fill" output="color2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="colorize3.fill" output="color1"/>
     </node>
 </ndbx>
