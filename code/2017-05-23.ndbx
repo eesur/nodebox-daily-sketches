@@ -32,7 +32,7 @@
                 <port name="seed" type="int" value="25"/>
             </node>
             <node name="slice1" position="-5.00,2.00" prototype="list.slice">
-                <port name="start_index" type="int" value="47"/>
+                <port name="start_index" type="int" value="50"/>
                 <port name="size" type="int" value="1"/>
             </node>
             <node name="slice2" position="-2.00,3.00" prototype="list.slice">
@@ -40,6 +40,7 @@
             </node>
             <port childReference="slice1.start_index" description="The starting index in the list." label="" min="0.0" name="start_index" range="value" type="int" value="47" widget="int"/>
             <port childReference="scatter1.seed" description="The random variation." label="" name="seed" range="value" type="int" value="25" widget="int"/>
+            <port childReference="slice2.start_index" description="The starting index in the list." label="" min="0.0" name="start_index_2" range="value" type="int" value="0" widget="int"/>
             <conn input="scatter1.shape" output="rect1"/>
             <conn input="lookup1.list" output="scatter1"/>
             <conn input="lookup2.list" output="scatter1"/>
@@ -71,5 +72,6 @@
         <conn input="network1.start_index" output="range1"/>
         <conn input="integer1.value" output="random_numbers1"/>
         <conn input="network1.seed" output="integer1"/>
+        <conn input="network1.start_index_2" output="range1"/>
     </node>
 </ndbx>
