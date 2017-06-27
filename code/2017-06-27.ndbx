@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="color2" position="-11.00,11.00" prototype="color.color">
+            <port name="color" type="color" value="#7ac143ff"/>
+        </node>
+        <node name="colorize1" position="-5.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#130c0eff"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize2" position="-8.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="combine2" position="-2.00,14.00" prototype="list.combine"/>
+        <node name="line_angle1" position="-5.00,6.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="24.0"/>
+        </node>
+        <node name="null1" position="-5.00,9.00" prototype="corevector.null"/>
+        <node name="range1" position="-5.00,4.00" prototype="math.range">
+            <port name="end" type="float" value="360.0"/>
+            <port name="step" type="float" value="10.0"/>
+        </node>
+        <node name="rect2" position="-8.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="scatter1" position="2.00,10.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="1795"/>
+        </node>
+        <node name="textpath1" position="2.00,8.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="YO!"/>
+            <port name="font_name" type="string" value="KappluschEF"/>
+            <port name="font_size" type="float" value="248.0"/>
+            <port name="position" type="point" value="5.00,83.00"/>
+        </node>
+        <node name="translate1" position="-1.00,12.00" prototype="corevector.translate"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="line_angle1.angle" output="range1"/>
+        <conn input="colorize1.shape" output="line_angle1"/>
+        <conn input="null1.shape" output="colorize1"/>
+        <conn input="translate1.shape" output="null1"/>
+        <conn input="translate1.translate" output="scatter1"/>
+        <conn input="combine2.list2" output="translate1"/>
+        <conn input="scatter1.shape" output="textpath1"/>
+    </node>
+</ndbx>
