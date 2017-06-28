@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="color2" position="-11.00,8.00" prototype="color.color">
+            <port name="color" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="colorize1" position="-5.00,7.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#130c0e9a"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize2" position="-8.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="combine2" position="-4.00,13.00" prototype="list.combine"/>
+        <node name="grid1" position="-1.00,9.00" prototype="corevector.grid">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="group1" position="-5.00,8.00" prototype="corevector.group"/>
+        <node name="line_angle1" position="-5.00,6.00" prototype="corevector.line_angle">
+            <port name="distance" type="float" value="152.0"/>
+        </node>
+        <node name="null1" position="-5.00,9.00" prototype="corevector.null"/>
+        <node name="range1" position="-7.00,4.00" prototype="math.range">
+            <port name="end" type="float" value="360.0"/>
+            <port name="step" type="float" value="10.0"/>
+        </node>
+        <node name="rect2" position="-8.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="translate1" position="-3.00,11.00" prototype="corevector.translate"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="line_angle1.angle" output="range1"/>
+        <conn input="colorize1.shape" output="line_angle1"/>
+        <conn input="translate1.translate" output="grid1"/>
+        <conn input="group1.shapes" output="colorize1"/>
+        <conn input="null1.shape" output="group1"/>
+        <conn input="translate1.shape" output="null1"/>
+        <conn input="combine2.list2" output="translate1"/>
+    </node>
+</ndbx>
