@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="color2" position="-11.00,8.00" prototype="color.color">
+            <port name="color" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="colorize1" position="-3.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="5.0"/>
+        </node>
+        <node name="colorize2" position="-8.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="combine2" position="-4.00,13.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-1.00,9.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="20.0"/>
+            <port name="target_end" type="float" value="20.0"/>
+        </node>
+        <node name="frame1" position="-1.00,7.00" prototype="core.frame"/>
+        <node name="line1" position="-5.00,8.00" prototype="corevector.line">
+            <port name="point1" type="point" value="-410.00,0.00"/>
+            <port name="point2" type="point" value="410.00,0.00"/>
+            <port name="points" type="int" value="39"/>
+        </node>
+        <node name="rect2" position="-8.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="wiggle1" position="-5.00,9.00" prototype="corevector.wiggle">
+            <port name="offset" type="point" value="10.00,24.00"/>
+            <port name="seed" type="int" value="53"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="combine2.list2" output="colorize1"/>
+        <conn input="wiggle1.shape" output="line1"/>
+        <conn input="colorize1.shape" output="wiggle1"/>
+        <conn input="convert_range1.value" output="frame1"/>
+        <conn input="wiggle1.seed" output="convert_range1"/>
+    </node>
+</ndbx>
