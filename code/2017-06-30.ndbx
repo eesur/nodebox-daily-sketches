@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="translate1">
+        <node name="color2" position="-11.00,8.00" prototype="color.color">
+            <port name="color" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colorize1" position="-3.00,12.00" prototype="corevector.colorize"/>
+        <node name="colorize2" position="-8.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="combine2" position="-4.00,16.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-3.00,6.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="5.0"/>
+            <port name="source_end" type="float" value="377.0"/>
+            <port name="target_end" type="float" value="1439.0"/>
+        </node>
+        <node name="divide1" position="2.00,7.00" prototype="math.divide">
+            <port name="value2" type="float" value="2.0"/>
+        </node>
+        <node name="make_numbers1" position="-3.00,4.00" prototype="math.make_numbers">
+            <port name="string" type="string" value="5, 8, 13, 21, 34, 55, 89, 144"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="make_point1" position="-7.00,8.00" prototype="corevector.make_point"/>
+        <node name="make_point2" position="2.00,10.00" prototype="corevector.make_point"/>
+        <node name="make_strings1" position="1.00,12.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#a6cee3,#1f78b4,#b2df8a,#33a02c,#fb9a99,#e31a1c,#fdbf6f,#ff7f00,#cab2d6,#6a3d9a"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="multiply1" position="2.00,8.00" prototype="math.multiply">
+            <port name="value2" type="float" value="-1.0"/>
+        </node>
+        <node name="rect1" position="-3.00,10.00" prototype="corevector.rect">
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="rect2" position="-8.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="sum1" position="2.00,6.00" prototype="math.sum"/>
+        <node name="translate1" position="-3.00,14.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="-406.00,0.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="colorize1.fill" output="make_strings1"/>
+        <conn input="rect1.position" output="make_point1"/>
+        <conn input="translate1.shape" output="colorize1"/>
+        <conn input="combine2.list2" output="translate1"/>
+        <conn input="divide1.value1" output="sum1"/>
+        <conn input="multiply1.value1" output="divide1"/>
+        <conn input="make_point2.x" output="multiply1"/>
+        <conn input="convert_range1.value" output="make_numbers1"/>
+        <conn input="rect1.width" output="convert_range1"/>
+        <conn input="make_point1.x" output="convert_range1"/>
+        <conn input="sum1.values" output="make_numbers1"/>
+    </node>
+</ndbx>
