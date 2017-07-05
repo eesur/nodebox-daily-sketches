@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="align1" position="9.00,13.00" prototype="corevector.align">
+            <port name="valign" type="string" value="bottom"/>
+        </node>
+        <node name="colorize1" position="9.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ec008c9a"/>
+        </node>
+        <node name="colorize2" position="-7.00,15.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#eeeeeeff"/>
+        </node>
+        <node name="colorize3" position="-2.00,13.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#0000001d"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="combine1" position="3.00,16.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-2.00,7.00" prototype="math.convert_range">
+            <port name="target_start" type="float" value="-200.0"/>
+            <port name="target_end" type="float" value="200.0"/>
+        </node>
+        <node name="convert_range2" position="9.00,7.00" prototype="math.convert_range">
+            <port name="target_end" type="float" value="400.0"/>
+        </node>
+        <node name="integer1" position="4.00,8.00" prototype="math.integer"/>
+        <node name="line1" position="-2.00,11.00" prototype="corevector.line">
+            <port name="point1" type="point" value="-200.00,0.00"/>
+            <port name="point2" type="point" value="200.00,0.00"/>
+        </node>
+        <node name="line2" position="12.00,10.00" prototype="corevector.line">
+            <port name="point1" type="point" value="-200.00,200.00"/>
+            <port name="point2" type="point" value="200.00,200.00"/>
+            <port name="points" type="int" value="5"/>
+        </node>
+        <node name="make_point1" position="-4.00,9.00" prototype="corevector.make_point">
+            <port name="x" type="float" value="-300.0"/>
+        </node>
+        <node name="make_point2" position="0.00,9.00" prototype="corevector.make_point">
+            <port name="x" type="float" value="300.0"/>
+        </node>
+        <node name="make_strings1" position="16.00,10.00" prototype="string.make_strings">
+            <port name="string" type="string" value="A,B,C,D,E"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="random_numbers1" position="9.00,5.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="5"/>
+            <port name="start" type="float" value="10.0"/>
+        </node>
+        <node name="range1" position="1.00,5.00" prototype="math.range">
+            <port name="end" type="float" value="125.0"/>
+            <port name="step" type="float" value="25.0"/>
+        </node>
+        <node name="rect1" position="9.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="68.0"/>
+        </node>
+        <node name="rect2" position="-7.00,14.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="reverse1" position="4.00,7.00" prototype="list.reverse"/>
+        <node name="textpath1" position="4.00,11.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="KappluschEF"/>
+            <port name="align" type="string" value="RIGHT"/>
+        </node>
+        <node name="textpath2" position="16.00,12.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="KappluschEF"/>
+        </node>
+        <node name="translate1" position="1.00,13.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="-15.00,8.00"/>
+        </node>
+        <node name="translate2" position="16.00,14.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="0.00,33.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="line1.point1" output="make_point1"/>
+        <conn input="line1.point2" output="make_point2"/>
+        <conn input="convert_range1.value" output="range1"/>
+        <conn input="make_point1.y" output="convert_range1"/>
+        <conn input="make_point2.y" output="convert_range1"/>
+        <conn input="textpath1.position" output="make_point1"/>
+        <conn input="translate1.shape" output="textpath1"/>
+        <conn input="textpath1.text" output="integer1"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="convert_range2.value" output="random_numbers1"/>
+        <conn input="rect1.height" output="convert_range2"/>
+        <conn input="reverse1.list" output="range1"/>
+        <conn input="integer1.value" output="reverse1"/>
+        <conn input="align1.shape" output="colorize1"/>
+        <conn input="combine1.list4" output="align1"/>
+        <conn input="align1.position" output="line2"/>
+        <conn input="combine1.list3" output="translate1"/>
+        <conn input="colorize3.shape" output="line1"/>
+        <conn input="combine1.list2" output="colorize3"/>
+        <conn input="textpath2.text" output="make_strings1"/>
+        <conn input="textpath2.position" output="line2"/>
+        <conn input="translate2.shape" output="textpath2"/>
+        <conn input="combine1.list7" output="translate2"/>
+    </node>
+</ndbx>
