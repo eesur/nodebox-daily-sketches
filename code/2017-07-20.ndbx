@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="-7.00,19.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#fdbb30ff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize3" position="-12.00,18.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colours" position="-3.00,15.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#EC008C,#F47521,#EE3124"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="combine1" position="-8.00,22.00" prototype="list.combine"/>
+        <node name="ellipse1" position="-8.00,16.00" prototype="corevector.ellipse"/>
+        <node name="number1" position="-5.00,13.00" prototype="math.number">
+            <port name="value" type="float" value="211.0"/>
+        </node>
+        <node name="polygon1" position="-10.00,13.00" prototype="corevector.polygon">
+            <port name="radius" type="float" value="181.0"/>
+            <port name="sides" type="int" value="30"/>
+        </node>
+        <node name="rect3" position="-13.00,16.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <conn input="colorize3.shape" output="rect3"/>
+        <conn input="combine1.list1" output="colorize3"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="ellipse1.width" output="number1"/>
+        <conn input="ellipse1.height" output="number1"/>
+        <conn input="ellipse1.position" output="polygon1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+    </node>
+</ndbx>
