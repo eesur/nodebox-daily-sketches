@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="color2" position="-11.00,8.00" prototype="color.color">
+            <port name="color" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colorize1" position="-4.00,12.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#7ac14300"/>
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="colorize2" position="-8.00,11.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="colorize3" position="1.00,13.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ddddddff"/>
+        </node>
+        <node name="combine2" position="-2.00,18.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-5.00,7.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="5.0"/>
+            <port name="source_end" type="float" value="144.0"/>
+            <port name="target_start" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="524.0"/>
+        </node>
+        <node name="convert_range2" position="5.00,10.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="10.0"/>
+        </node>
+        <node name="ellipse1" position="-3.00,9.00" prototype="corevector.ellipse"/>
+        <node name="frame1" position="5.00,8.00" prototype="core.frame"/>
+        <node name="make_numbers1" position="-5.00,4.00" prototype="math.make_numbers">
+            <port name="string" type="string" value="5, 8, 13, 21, 34, 55, 89, 144"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="make_strings1" position="1.00,7.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#a6cee3,#1f78b4,#b2df8a,#33a02c,#fb9a99,#e31a1c,#fdbf6f,#ff7f00,#cab2d6,#6a3d9a"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="range1" position="7.00,12.00" prototype="math.range">
+            <port name="start" type="float" value="-30.0"/>
+            <port name="end" type="float" value="360.0"/>
+            <port name="step" type="float" value="30.0"/>
+        </node>
+        <node name="rect2" position="-8.00,10.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="rect3" position="1.00,12.00" prototype="corevector.rect">
+            <port name="position" type="point" value="150.00,-150.00"/>
+            <port name="width" type="float" value="300.0"/>
+            <port name="height" type="float" value="300.0"/>
+        </node>
+        <node name="reverse1" position="-2.00,6.00" prototype="list.reverse"/>
+        <node name="rotate1" position="1.00,16.00" prototype="corevector.rotate">
+            <port name="angle" type="float" value="30.0"/>
+        </node>
+        <node name="shuffle1" position="0.00,9.00" prototype="list.shuffle"/>
+        <node name="slice1" position="5.00,14.00" prototype="list.slice">
+            <port name="size" type="int" value="1"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="colorize2.fill" output="color2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="ellipse1.width" output="convert_range1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="ellipse1.height" output="convert_range1"/>
+        <conn input="reverse1.list" output="make_numbers1"/>
+        <conn input="convert_range1.value" output="reverse1"/>
+        <conn input="combine2.list2" output="colorize1"/>
+        <conn input="colorize3.fill" output="color2"/>
+        <conn input="colorize3.shape" output="rect3"/>
+        <conn input="rotate1.shape" output="colorize3"/>
+        <conn input="combine2.list3" output="rotate1"/>
+        <conn input="convert_range2.value" output="frame1"/>
+        <conn input="slice1.list" output="range1"/>
+        <conn input="slice1.start_index" output="convert_range2"/>
+        <conn input="rotate1.angle" output="slice1"/>
+        <conn input="shuffle1.seed" output="convert_range2"/>
+        <conn input="shuffle1.list" output="make_strings1"/>
+        <conn input="colorize1.stroke" output="shuffle1"/>
+    </node>
+</ndbx>
