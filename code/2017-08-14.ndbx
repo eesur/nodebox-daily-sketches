@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine3">
+        <node name="colorize1" position="7.00,18.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#dfe0e2ff"/>
+            <port name="stroke" type="color" value="#f45844ff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize2" position="0.00,18.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#dfe0e2ff"/>
+        </node>
+        <node name="colorize3" position="11.00,18.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f45844ff"/>
+        </node>
+        <node name="combine1" position="5.00,21.00" prototype="list.combine"/>
+        <node name="combine2" position="7.00,14.00" prototype="list.combine"/>
+        <node name="combine3" position="3.00,24.00" prototype="list.combine"/>
+        <node name="line1" position="6.00,12.00" prototype="corevector.line">
+            <port name="points" type="int" value="12"/>
+        </node>
+        <node name="line2" position="9.00,12.00" prototype="corevector.line">
+            <port name="point1" type="point" value="100.00,87.00"/>
+            <port name="point2" type="point" value="247.00,-95.00"/>
+            <port name="points" type="int" value="16"/>
+        </node>
+        <node name="line3" position="12.00,12.00" prototype="corevector.line">
+            <port name="point1" type="point" value="247.00,-86.00"/>
+            <port name="point2" type="point" value="410.00,50.00"/>
+            <port name="points" type="int" value="17"/>
+        </node>
+        <node name="range1" position="3.00,13.00" prototype="math.range">
+            <port name="end" type="float" value="59.0"/>
+            <port name="step" type="float" value="8.0"/>
+        </node>
+        <node name="rect2" position="0.00,17.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="textpath1" position="6.00,16.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="M"/>
+            <port name="font_name" type="string" value="InputSans-Medium"/>
+            <port name="font_size" type="float" value="260.0"/>
+        </node>
+        <node name="textpath2" position="11.00,16.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="M"/>
+            <port name="font_name" type="string" value="InputSans-Medium"/>
+            <port name="font_size" type="float" value="260.0"/>
+            <port name="position" type="point" value="410.00,50.00"/>
+        </node>
+        <node name="translate1" position="5.00,22.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="-184.00,114.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="colorize1.shape" output="textpath1"/>
+        <conn input="colorize3.shape" output="textpath2"/>
+        <conn input="combine2.list2" output="line2"/>
+        <conn input="combine2.list1" output="line1"/>
+        <conn input="textpath1.position" output="combine2"/>
+        <conn input="combine3.list1" output="colorize2"/>
+        <conn input="translate1.shape" output="combine1"/>
+        <conn input="combine3.list2" output="translate1"/>
+        <conn input="combine2.list3" output="line3"/>
+        <conn input="combine1.list3" output="colorize3"/>
+    </node>
+</ndbx>

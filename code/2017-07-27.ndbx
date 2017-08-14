@@ -6,11 +6,12 @@
     <property name="canvasY" value="0"/>
     <node name="root" prototype="core.network" renderedChild="combine2">
         <node name="color2" position="-12.00,13.00" prototype="color.color">
-            <port name="color" type="color" value="#dbb700ff"/>
+            <port name="color" type="color" value="#fbae17ff"/>
         </node>
         <node name="colorize1" position="-2.00,15.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#0f0a0100"/>
-            <port name="strokeWidth" type="float" value="4.0"/>
+            <port name="stroke" type="color" value="#f7772cff"/>
+            <port name="strokeWidth" type="float" value="8.0"/>
         </node>
         <node name="colorize2" position="-10.00,16.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#ddddddff"/>
