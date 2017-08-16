@@ -11,7 +11,7 @@
             <port name="strokeWidth" type="float" value="9.0"/>
         </node>
         <node name="colorize2" position="0.00,18.00" prototype="corevector.colorize">
-            <port name="fill" type="color" value="#dfe0e2ff"/>
+            <port name="fill" type="color" value="#a5a6a9ff"/>
         </node>
         <node name="colorize3" position="16.00,22.00" prototype="corevector.colorize">
             <port name="fill" type="color" value="#e7b300ff"/>
@@ -19,7 +19,7 @@
             <port name="strokeWidth" type="float" value="15.0"/>
         </node>
         <node name="colorize4" position="15.00,27.00" prototype="corevector.colorize">
-            <port name="fill" type="color" value="#dfe0e2ff"/>
+            <port name="fill" type="color" value="#a5a6a9ff"/>
         </node>
         <node name="combine3" position="4.00,26.00" prototype="list.combine"/>
         <node name="convert_range1" position="12.00,17.00" prototype="math.convert_range">
