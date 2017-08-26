@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine3">
+        <node name="colorize1" position="8.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#0f0a01ff"/>
+            <port name="stroke" type="color" value="#dbb70048"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="colorize2" position="2.00,5.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#0f0a01ff"/>
+        </node>
+        <node name="combine3" position="6.00,9.00" prototype="list.combine"/>
+        <node name="ellipse1" position="6.00,5.00" prototype="corevector.ellipse">
+            <port name="width" type="float" value="20.0"/>
+            <port name="height" type="float" value="20.0"/>
+        </node>
+        <node name="freehand1" position="6.00,1.00" prototype="corevector.freehand">
+            <port name="path" type="string" value="M84.00,69.50  84.00,68.50  84.00,65.50  84.00,61.50  99.00,44.50  116.00,33.50  137.00,27.50  145.00,37.50  144.00,55.50  112.00,83.50  44.00,117.50  -45.00,128.50  -97.00,126.50  -135.00,113.50  -188.00,77.50  -282.00,-41.50  -310.00,-94.50  -318.00,-109.50  -327.00,-125.50  -337.00,-140.50  -338.00,-141.50  -336.00,-141.50  -265.00,-122.50  333.00,-28.50  799.00,24.50  809.00,26.50  807.00,26.50  807.00,27.50  807.00,27.50  781.00,31.50  219.00,51.50  -462.00,95.50  -462.00,99.50  -460.00,98.50  -456.00,98.50  -136.00,282.50  431.00,337.50  569.00,331.50  568.00,331.50  319.00,-30.50  232.00,-374.50  231.00,-374.50  230.00,-374.50  229.00,-374.50  229.00,-372.50  175.00,-282.50  120.00,-231.50  85.00,-206.50  85.00,-216.50  85.00,-217.50  86.00,-217.50  121.00,-197.50  141.00,-184.50  172.00,-165.50  207.00,-147.50  260.00,-110.50  253.00,-109.50  147.00,-167.50  71.00,-207.50  56.00,-214.50  55.00,-214.50  78.00,-195.50  231.00,-69.50  326.00,-10.50  330.00,-6.50  203.00,-79.50  74.00,-163.50  73.00,-163.50  214.00,-150.50  11.00,-2.50  135.00,-16.50  186.00,-172.50  193.00,-252.50  102.00,-221.50  124.00,-196.50  193.00,-151.50  102.00,-56.50  -188.00,29.50  -123.00,-326.50  -369.00,228.50  176.00,183.50  427.00,160.50 "/>
+        </node>
+        <node name="grid1" position="9.00,3.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="18"/>
+            <port name="rows" type="int" value="2"/>
+        </node>
+        <node name="hsb_color1" position="10.00,6.00" prototype="color.hsb_color">
+            <port name="hue" type="float" value="73.0"/>
+            <port name="saturation" type="float" value="100.0"/>
+            <port name="brightness" type="float" value="100.0"/>
+            <port name="alpha" type="float" value="100.0"/>
+            <port name="range" type="float" value="100.0"/>
+        </node>
+        <node name="random_numbers1" position="3.00,2.00" prototype="math.random_numbers"/>
+        <node name="range1" position="12.00,2.00" prototype="math.range">
+            <port name="end" type="float" value="100.0"/>
+        </node>
+        <node name="rect2" position="2.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="textpath1" position="20.00,22.00" prototype="corevector.textpath">
+            <port name="text" type="string" value="hello "/>
+            <port name="font_name" type="string" value="InputMono-Medium"/>
+            <port name="font_size" type="float" value="177.0"/>
+            <port name="position" type="point" value="277.00,-143.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine3.list1" output="colorize2"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="combine3.list2" output="colorize1"/>
+        <conn input="ellipse1.position" output="grid1"/>
+        <conn input="grid1.position" output="freehand1"/>
+        <conn input="ellipse1.width" output="random_numbers1"/>
+        <conn input="ellipse1.height" output="random_numbers1"/>
+        <conn input="hsb_color1.hue" output="range1"/>
+        <conn input="colorize1.stroke" output="hsb_color1"/>
+    </node>
+</ndbx>
