@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="7.00,3.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#de3d83ff"/>
+            <port name="stroke" type="color" value="#eeeeeeff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize2" position="0.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#eeeeeeff"/>
+        </node>
+        <node name="combine1" position="8.00,11.00" prototype="list.combine"/>
+        <node name="copy1" position="9.00,7.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="9"/>
+            <port name="translate" type="point" value="-2.00,-39.00"/>
+        </node>
+        <node name="copy2" position="13.00,7.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="6"/>
+            <port name="translate" type="point" value="-2.00,-39.00"/>
+        </node>
+        <node name="copy3" position="17.00,7.00" prototype="corevector.copy">
+            <port name="copies" type="int" value="3"/>
+            <port name="translate" type="point" value="-2.00,-39.00"/>
+        </node>
+        <node name="rect1" position="7.00,1.00" prototype="corevector.rect">
+            <port name="position" type="point" value="102.00,189.00"/>
+            <port name="width" type="float" value="258.0"/>
+            <port name="height" type="float" value="63.0"/>
+        </node>
+        <node name="rect2" position="0.00,9.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="rotate1" position="7.00,4.00" prototype="corevector.rotate">
+            <port name="angle" type="float" value="18.0"/>
+        </node>
+        <node name="skew1" position="7.00,5.00" prototype="corevector.skew">
+            <port name="skew" type="point" value="54.00,0.00"/>
+        </node>
+        <node name="translate1" position="12.00,9.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="263.00,0.00"/>
+        </node>
+        <node name="translate2" position="16.00,9.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="527.00,0.00"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="rotate1.shape" output="colorize1"/>
+        <conn input="skew1.shape" output="rotate1"/>
+        <conn input="copy1.shape" output="skew1"/>
+        <conn input="combine1.list2" output="copy1"/>
+        <conn input="copy2.shape" output="skew1"/>
+        <conn input="translate1.shape" output="copy2"/>
+        <conn input="combine1.list3" output="translate1"/>
+        <conn input="copy3.shape" output="skew1"/>
+        <conn input="translate2.shape" output="copy3"/>
+        <conn input="combine1.list4" output="translate2"/>
+    </node>
+</ndbx>
