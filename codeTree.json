@@ -1,8 +1,15 @@
 [
   {
+    "path": "code/2017-09-03.ndbx",
+    "name": "2017-09-03.ndbx",
+    "size": 5612,
+    "extension": ".ndbx",
+    "type": "file"
+  },
+  {
     "path": "code/2017-08-30.ndbx",
     "name": "2017-08-30.ndbx",
-    "size": 5143,
+    "size": 6881,
     "extension": ".ndbx",
     "type": "file"
   },

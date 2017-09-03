@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="303d8660-c8c2-4b8b-a189-3ae572de27da">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="4.00,7.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#2f292bff"/>
+        </node>
+        <node name="colorize2" position="-1.00,5.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#a5a6a9ff"/>
+        </node>
+        <node name="colorize3" position="9.00,7.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#dfe0e2ff"/>
+        </node>
+        <node name="colorize4" position="14.00,4.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#2f292bff"/>
+        </node>
+        <node name="combine1" position="7.00,9.00" prototype="list.combine"/>
+        <node name="compare1" position="6.00,3.00" prototype="math.compare">
+            <port name="value2" type="float" value="30.0"/>
+        </node>
+        <node name="compare2" position="10.00,3.00" prototype="math.compare">
+            <port name="value2" type="float" value="30.0"/>
+            <port name="comparator" type="string" value="&gt;="/>
+        </node>
+        <node name="concatenate1" position="14.00,1.00" prototype="string.concatenate">
+            <port name="string2" type="string" value="%"/>
+        </node>
+        <node name="convert_range1" position="7.00,-6.00" prototype="math.convert_range">
+            <port name="source_end" type="float" value="10.0"/>
+            <port name="target_end" type="float" value="10.0"/>
+        </node>
+        <node name="count1" position="8.00,-1.00" prototype="list.count"/>
+        <node name="cull1" position="4.00,5.00" prototype="list.cull"/>
+        <node name="cull2" position="9.00,5.00" prototype="list.cull"/>
+        <node name="frame1" position="7.00,-7.00" prototype="core.frame"/>
+        <node name="grid1" position="4.00,-3.00" prototype="corevector.grid">
+            <port name="width" type="float" value="400.0"/>
+            <port name="height" type="float" value="400.0"/>
+            <port name="position" type="point" value="-111.00,0.00"/>
+        </node>
+        <node name="integer1" position="12.00,-1.00" prototype="math.integer"/>
+        <node name="number1" position="-1.00,-2.00" prototype="math.number">
+            <port name="value" type="float" value="37.0"/>
+        </node>
+        <node name="percentage" position="12.00,-2.00" prototype="math.number">
+            <port name="value" type="float" value="50.0"/>
+        </node>
+        <node name="random_numbers1" position="12.00,-4.00" prototype="math.random_numbers">
+            <port name="amount" type="int" value="1"/>
+            <port name="seed" type="int" value="6"/>
+        </node>
+        <node name="range1" position="8.00,1.00" prototype="math.range">
+            <port name="end" type="float" value="11.0"/>
+        </node>
+        <node name="rect1" position="2.00,0.00" prototype="corevector.rect">
+            <port name="width" type="float" value="10.0"/>
+            <port name="height" type="float" value="10.0"/>
+        </node>
+        <node name="rect2" position="-1.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="string1" position="14.00,-6.00" prototype="string.string"/>
+        <node name="textpath1" position="14.00,2.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputMonoCompressed-Light"/>
+            <port name="font_size" type="float" value="148.0"/>
+            <port name="position" type="point" value="253.00,-112.00"/>
+        </node>
+        <conn input="rect1.position" output="grid1"/>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="range1.end" output="count1"/>
+        <conn input="compare1.value1" output="range1"/>
+        <conn input="compare2.value1" output="range1"/>
+        <conn input="cull1.booleans" output="compare1"/>
+        <conn input="cull2.booleans" output="compare2"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="cull1.list" output="rect1"/>
+        <conn input="colorize1.shape" output="cull1"/>
+        <conn input="cull2.list" output="rect1"/>
+        <conn input="colorize3.shape" output="cull2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="combine1.list3" output="colorize3"/>
+        <conn input="rect1.width" output="number1"/>
+        <conn input="rect1.height" output="number1"/>
+        <conn input="colorize4.shape" output="textpath1"/>
+        <conn input="combine1.list4" output="colorize4"/>
+        <conn input="compare2.value2" output="integer1"/>
+        <conn input="compare1.value2" output="integer1"/>
+        <conn input="integer1.value" output="percentage"/>
+        <conn input="percentage.value" output="random_numbers1"/>
+        <conn input="convert_range1.value" output="frame1"/>
+        <conn input="random_numbers1.seed" output="convert_range1"/>
+        <conn input="concatenate1.string1" output="integer1"/>
+        <conn input="textpath1.text" output="concatenate1"/>
+    </node>
+</ndbx>
