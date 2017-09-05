@@ -1,5 +1,19 @@
 [
   {
+    "path": "img-refs/2017-09-05.png",
+    "name": "2017-09-05.png",
+    "size": 18342,
+    "extension": ".png",
+    "type": "file"
+  },
+  {
+    "path": "img-refs/2017-09-04.gif",
+    "name": "2017-09-04.gif",
+    "size": 603819,
+    "extension": ".gif",
+    "type": "file"
+  },
+  {
     "path": "img-refs/2017-09-03.gif",
     "name": "2017-09-03.gif",
     "size": 163319,
