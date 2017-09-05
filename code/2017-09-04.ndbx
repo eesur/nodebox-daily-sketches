@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="303d8660-c8c2-4b8b-a189-3ae572de27da">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="6.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#2f292b00"/>
+            <port name="stroke" type="color" value="#f65944ff"/>
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="colorize2" position="-1.00,5.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fbfbfbff"/>
+        </node>
+        <node name="combine1" position="7.00,9.00" prototype="list.combine"/>
+        <node name="connect1" position="6.00,4.00" prototype="corevector.connect">
+            <port name="closed" type="boolean" value="false"/>
+        </node>
+        <node name="coordinates1" position="-6.00,13.00" prototype="math.coordinates"/>
+        <node name="coordinates2" position="-6.00,13.00" prototype="math.coordinates"/>
+        <node name="coordinates3" position="6.00,3.00" prototype="math.coordinates"/>
+        <node name="rect2" position="-1.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="sample1" position="5.00,-2.00" prototype="math.sample">
+            <port name="amount" type="int" value="78"/>
+            <port name="start" type="float" value="200.0"/>
+            <port name="end" type="float" value="474.0"/>
+        </node>
+        <node name="sample2" position="10.00,-3.00" prototype="math.sample">
+            <port name="amount" type="int" value="136"/>
+            <port name="start" type="float" value="39.0"/>
+            <port name="end" type="float" value="296.0"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="coordinates3.angle" output="sample1"/>
+        <conn input="connect1.points" output="coordinates3"/>
+        <conn input="coordinates3.distance" output="sample2"/>
+        <conn input="colorize1.shape" output="connect1"/>
+    </node>
+</ndbx>
