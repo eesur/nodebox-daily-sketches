@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="b195443c-3092-4873-9ade-e828186c4e03">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="-8.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#dd6464ff"/>
+        </node>
+        <node name="colorize3" position="-17.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fbae17ff"/>
+            <port name="stroke" type="color" value="#e7b300ff"/>
+        </node>
+        <node name="combine1" position="-13.00,13.00" prototype="list.combine"/>
+        <node name="count1" position="-12.00,0.00" prototype="list.count"/>
+        <node name="donut" position="-13.00,8.00" prototype="core.network" renderedChild="translate1">
+            <node name="arc2" position="-14.00,4.00" prototype="corevector.arc">
+                <port name="width" type="float" value="400.0"/>
+                <port name="height" type="float" value="400.0"/>
+                <port name="start_angle" type="float" value="-90.0"/>
+                <port name="degrees" type="float" value="215.0"/>
+            </node>
+            <node name="bg_circle" position="-23.00,4.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="400.0"/>
+                <port name="height" type="float" value="400.0"/>
+            </node>
+            <node name="colorize4" position="-23.00,6.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#e4e6ddff"/>
+                <port name="stroke" type="color" value="#635045ff"/>
+            </node>
+            <node name="colorize5" position="-14.00,6.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#dd6464ff"/>
+                <port name="stroke" type="color" value="#635045ff"/>
+            </node>
+            <node name="colorize6" position="-19.00,6.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#fbae17ff"/>
+                <port name="stroke" type="color" value="#635045ff"/>
+            </node>
+            <node name="combine1" position="-17.00,9.00" prototype="list.combine"/>
+            <node name="divide1" position="-20.00,0.00" prototype="math.divide">
+                <port name="value2" type="float" value="2.0"/>
+            </node>
+            <node name="fg_circle" position="-19.00,4.00" prototype="corevector.ellipse">
+                <port name="width" type="float" value="300.0"/>
+                <port name="height" type="float" value="300.0"/>
+            </node>
+            <node name="make_strings1" position="0.00,15.00" prototype="string.make_strings">
+                <port name="string" type="string" value="#FDBB30,#130C0E,#EC008C,#EE3124,#F47521,#A4CD39,#00b0dd,#0066b3,#17479e"/>
+                <port name="separator" type="string" value=","/>
+            </node>
+            <node name="multiply1" position="-16.00,-1.00" prototype="math.multiply">
+                <port name="value2" type="float" value="3.6"/>
+            </node>
+            <node name="percent" position="-12.00,-4.00" prototype="math.number">
+                <port name="value" type="float" value="75.0"/>
+            </node>
+            <node name="radius" position="-22.00,-3.00" prototype="math.number">
+                <port name="value" type="float" value="91.0"/>
+            </node>
+            <node name="translate1" position="-20.00,12.00" prototype="corevector.translate"/>
+            <port childReference="translate1.translate" description="The amount of translation." label="" name="translate" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="percent.value" description="" label="" name="perrcent" range="value" type="float" value="75.0" widget="float"/>
+            <port childReference="radius.value" description="" label="" name="size" range="value" type="float" value="91.0" widget="float"/>
+            <conn input="combine1.list2" output="colorize4"/>
+            <conn input="colorize5.shape" output="arc2"/>
+            <conn input="combine1.list3" output="colorize5"/>
+            <conn input="combine1.list4" output="colorize6"/>
+            <conn input="colorize4.shape" output="bg_circle"/>
+            <conn input="colorize6.shape" output="fg_circle"/>
+            <conn input="bg_circle.width" output="radius"/>
+            <conn input="bg_circle.height" output="radius"/>
+            <conn input="arc2.width" output="radius"/>
+            <conn input="arc2.height" output="radius"/>
+            <conn input="arc2.degrees" output="multiply1"/>
+            <conn input="divide1.value1" output="radius"/>
+            <conn input="fg_circle.width" output="divide1"/>
+            <conn input="fg_circle.height" output="divide1"/>
+            <conn input="multiply1.value1" output="percent"/>
+            <conn input="translate1.shape" output="combine1"/>
+        </node>
+        <node name="frame1" position="-8.00,-5.00" prototype="core.frame"/>
+        <node name="grid1" position="-15.00,4.00" prototype="corevector.grid">
+            <port name="width" type="float" value="606.0"/>
+            <port name="height" type="float" value="458.0"/>
+        </node>
+        <node name="integer1" position="-7.00,5.00" prototype="math.integer"/>
+        <node name="number1" position="-19.00,2.00" prototype="math.number">
+            <port name="value" type="float" value="5.0"/>
+        </node>
+        <node name="random_numbers1" position="-8.00,2.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="6.0"/>
+            <port name="end" type="float" value="93.0"/>
+            <port name="seed" type="int" value="20"/>
+        </node>
+        <node name="rect3" position="-19.00,7.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="textpath1" position="-8.00,8.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="InputSans-Black"/>
+            <port name="font_size" type="float" value="22.0"/>
+        </node>
+        <node name="translate1" position="-8.00,11.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="0.00,7.00"/>
+        </node>
+        <conn input="colorize3.shape" output="rect3"/>
+        <conn input="combine1.list1" output="colorize3"/>
+        <conn input="combine1.list2" output="donut"/>
+        <conn input="donut.translate" output="grid1"/>
+        <conn input="grid1.rows" output="number1"/>
+        <conn input="grid1.columns" output="number1"/>
+        <conn input="integer1.value" output="random_numbers1"/>
+        <conn input="textpath1.text" output="integer1"/>
+        <conn input="textpath1.position" output="grid1"/>
+        <conn input="donut.perrcent" output="integer1"/>
+        <conn input="colorize1.shape" output="textpath1"/>
+        <conn input="translate1.shape" output="colorize1"/>
+        <conn input="combine1.list3" output="translate1"/>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="random_numbers1.seed" output="frame1"/>
+    </node>
+</ndbx>
