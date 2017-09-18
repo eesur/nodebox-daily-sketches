@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="b195443c-3092-4873-9ade-e828186c4e03">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize3" position="-20.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#666666ff"/>
+            <port name="stroke" type="color" value="#e7b300ff"/>
+        </node>
+        <node name="colorize4" position="-16.00,9.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#66666600"/>
+            <port name="stroke" type="color" value="#e7b300ff"/>
+            <port name="strokeWidth" type="float" value="7.0"/>
+        </node>
+        <node name="combine1" position="-17.00,12.00" prototype="list.combine"/>
+        <node name="convert_range1" position="-21.00,5.00" prototype="math.convert_range">
+            <port name="source_start" type="float" value="1.0"/>
+            <port name="source_end" type="float" value="987.0"/>
+            <port name="target_end" type="float" value="495.0"/>
+        </node>
+        <node name="ellipse1" position="-19.00,7.00" prototype="corevector.ellipse"/>
+        <node name="frame1" position="-14.00,2.00" prototype="core.frame"/>
+        <node name="grid1" position="-13.00,5.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="1"/>
+            <port name="rows" type="int" value="1"/>
+            <port name="width" type="float" value="341.0"/>
+            <port name="height" type="float" value="412.0"/>
+            <port name="position" type="point" value="-24.00,3.00"/>
+        </node>
+        <node name="make_numbers2" position="-19.00,3.00" prototype="math.make_numbers">
+            <port name="string" type="string" value="1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="make_strings1" position="-14.00,7.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#de3d83;#e0e5db;#e4bd0b;#00b8b8"/>
+        </node>
+        <node name="make_strings3" position="2.00,12.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#FDBB30,#130C0E,#EC008C,#EE3124,#F47521,#A4CD39,#00b0dd,#0066b3,#17479e"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="rect3" position="-23.00,8.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <conn input="colorize3.shape" output="rect3"/>
+        <conn input="convert_range1.value" output="make_numbers2"/>
+        <conn input="combine1.list1" output="colorize3"/>
+        <conn input="colorize4.shape" output="ellipse1"/>
+        <conn input="combine1.list2" output="colorize4"/>
+        <conn input="ellipse1.width" output="convert_range1"/>
+        <conn input="ellipse1.height" output="convert_range1"/>
+        <conn input="colorize4.stroke" output="make_strings1"/>
+        <conn input="ellipse1.position" output="grid1"/>
+        <conn input="grid1.columns" output="frame1"/>
+    </node>
+</ndbx>
