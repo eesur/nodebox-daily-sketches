@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="0.00,7.00" prototype="corevector.colorize"/>
+        <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="combine1" position="-3.00,9.00" prototype="list.combine"/>
+        <node name="grid1" position="-7.00,2.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="117"/>
+            <port name="rows" type="int" value="9"/>
+            <port name="width" type="float" value="551.0"/>
+            <port name="height" type="float" value="463.0"/>
+            <port name="position" type="point" value="0.00,-15.00"/>
+        </node>
+        <node name="make_strings1" position="2.00,3.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#FDBB30,#EC008C,#EE3124,#F47521,#A4CD39,#00b0dd,#0066b3,#17479e"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="rect1" position="-3.00,5.00" prototype="corevector.rect"/>
+        <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="sample1" position="-3.00,2.00" prototype="math.sample">
+            <port name="amount" type="int" value="33"/>
+            <port name="start" type="float" value="-81.0"/>
+            <port name="end" type="float" value="98.0"/>
+        </node>
+        <node name="shuffle1" position="2.00,5.00" prototype="list.shuffle">
+            <port name="seed" type="int" value="15"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="rect1.width" output="sample1"/>
+        <conn input="rect1.height" output="sample1"/>
+        <conn input="rect1.position" output="grid1"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="shuffle1.list" output="make_strings1"/>
+        <conn input="colorize1.fill" output="shuffle1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+    </node>
+</ndbx>
