@@ -22,6 +22,6 @@
   "homepage": "https://github.com/eesur/nodebox-daily-sketches#readme",
   "dependencies": {
     "directory-tree": "^2.0.0",
-    "jsonfile": "^3.0.0"
+    "jsonfile": "^3.0.1"
   }
 }
