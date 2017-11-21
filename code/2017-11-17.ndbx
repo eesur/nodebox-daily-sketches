@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="7d48860c-558a-4c44-9996-e79bbc6ad195">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <link href="python:../../../../Downloads/Singularity/make_curve.py" rel="functions"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="arc1" position="-1.00,12.00" prototype="corevector.arc">
+            <port name="width" type="float" value="400.0"/>
+            <port name="height" type="float" value="400.0"/>
+            <port name="start_angle" type="float" value="29.0"/>
+            <port name="degrees" type="float" value="360.0"/>
+            <port name="type" type="string" value="open"/>
+        </node>
+        <node name="colorize3" position="-2.00,25.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#0000a8ff"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="colorize4" position="-5.00,26.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+            <port name="stroke" type="color" value="#898989ff"/>
+        </node>
+        <node name="combine1" position="-2.00,28.00" prototype="list.combine"/>
+        <node name="frame1" position="5.00,12.00" prototype="core.frame"/>
+        <node name="hsb_color2" position="3.00,22.00" prototype="color.hsb_color">
+            <port name="saturation" type="float" value="255.0"/>
+            <port name="brightness" type="float" value="255.0"/>
+            <port name="alpha" type="float" value="172.0"/>
+            <port name="range" type="float" value="100.0"/>
+        </node>
+        <node category="geometry" description="Creates a curve path using 2 control points" function="make_curve/makecurve" name="make_curve" outputType="geometry" position="-2.00,21.00">
+            <port description="" label="" name="pt1" range="value" type="point" value="-200.00,0.00" widget="point"/>
+            <port description="" label="" name="pt2" range="value" type="point" value="200.00,0.00" widget="point"/>
+            <port description="" label="" name="c1" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port description="" label="" name="c2" range="value" type="point" value="129.00,48.00" widget="point"/>
+        </node>
+        <node name="point_on_path1" position="-1.00,14.00" prototype="corevector.point_on_path">
+            <port name="t" type="float" value="113.0"/>
+        </node>
+        <node name="rect1" position="-5.00,15.00" prototype="corevector.rect">
+            <port name="width" type="float" value="1095.0"/>
+            <port name="height" type="float" value="1084.0"/>
+        </node>
+        <node name="rect2" position="-5.00,24.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="resample1" position="-5.00,18.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+            <port name="length" type="float" value="1.0"/>
+            <port name="points" type="int" value="21"/>
+        </node>
+        <node name="wave6" position="5.00,16.00" prototype="math.wave">
+            <port name="min" type="float" value="1.0"/>
+            <port name="max" type="float" value="3.0"/>
+            <port name="period" type="float" value="20.0"/>
+            <port name="type" type="string" value="triangle"/>
+        </node>
+        <conn input="point_on_path1.t" output="frame1"/>
+        <conn input="resample1.shape" output="rect1"/>
+        <conn input="colorize3.stroke" output="hsb_color2"/>
+        <conn input="colorize3.shape" output="make_curve"/>
+        <conn input="colorize4.shape" output="rect2"/>
+        <conn input="combine1.list3" output="colorize3"/>
+        <conn input="combine1.list1" output="colorize4"/>
+        <conn input="point_on_path1.shape" output="arc1"/>
+        <conn input="wave6.offset" output="frame1"/>
+        <conn input="colorize3.strokeWidth" output="wave6"/>
+        <conn input="hsb_color2.hue" output="wave6"/>
+        <conn input="make_curve.c2" output="resample1"/>
+        <conn input="make_curve.pt1" output="point_on_path1"/>
+        <conn input="make_curve.pt2" output="point_on_path1"/>
+    </node>
+</ndbx>
