@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="8.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#a87e94ff"/>
+            <port name="stroke" type="color" value="#ffbfe1ff"/>
+        </node>
+        <node name="colorize2" position="3.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#ffbfe1ff"/>
+        </node>
+        <node name="colorize3" position="12.00,8.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#0c4223ff"/>
+            <port name="stroke" type="color" value="#eeeeeeff"/>
+        </node>
+        <node name="combine1" position="10.00,11.00" prototype="list.combine"/>
+        <node name="count1" position="13.00,1.00" prototype="list.count"/>
+        <node name="ellipse1" position="8.00,6.00" prototype="corevector.ellipse"/>
+        <node name="ellipse2" position="12.00,6.00" prototype="corevector.ellipse"/>
+        <node name="grid1" position="8.00,4.00" prototype="corevector.grid">
+            <port name="width" type="float" value="656.0"/>
+            <port name="height" type="float" value="460.0"/>
+        </node>
+        <node name="integer2" position="14.00,4.00" prototype="math.integer"/>
+        <node name="number1" position="4.00,4.00" prototype="math.number">
+            <port name="value" type="float" value="7.0"/>
+        </node>
+        <node name="random_numbers1" position="13.00,2.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="-32.0"/>
+            <port name="end" type="float" value="62.0"/>
+            <port name="seed" type="int" value="32"/>
+        </node>
+        <node name="rect2" position="3.00,7.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="translate1" position="12.00,9.00" prototype="corevector.translate"/>
+        <node name="wiggle1" position="11.00,5.00" prototype="corevector.wiggle">
+            <port name="offset" type="point" value="0.00,0.00"/>
+            <port name="seed" type="int" value="92"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="ellipse1.width" output="number1"/>
+        <conn input="ellipse1.height" output="number1"/>
+        <conn input="ellipse1.position" output="grid1"/>
+        <conn input="colorize3.shape" output="ellipse2"/>
+        <conn input="translate1.shape" output="colorize3"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="combine1.list3" output="translate1"/>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="integer2.value" output="random_numbers1"/>
+        <conn input="ellipse2.width" output="integer2"/>
+        <conn input="ellipse2.height" output="integer2"/>
+        <conn input="wiggle1.shape" output="grid1"/>
+        <conn input="ellipse2.position" output="wiggle1"/>
+        <conn input="combine1.list4" output="colorize1"/>
+    </node>
+</ndbx>
