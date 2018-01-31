@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="8.00,17.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="colorize2" position="14.00,18.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#130c0eff"/>
+        </node>
+        <node name="colorize3" position="4.00,19.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fdbb30ff"/>
+        </node>
+        <node name="combine1" position="11.00,20.00" prototype="list.combine"/>
+        <node name="convert_range1" position="15.00,13.00" prototype="math.convert_range">
+            <port name="target_end" type="float" value="1225.0"/>
+        </node>
+        <node name="count1" position="11.00,10.00" prototype="list.count"/>
+        <node name="ellipse1" position="14.00,15.00" prototype="corevector.ellipse"/>
+        <node name="grid1" position="8.00,10.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="4"/>
+            <port name="rows" type="int" value="4"/>
+            <port name="width" type="float" value="500.0"/>
+            <port name="height" type="float" value="447.0"/>
+            <port name="position" type="point" value="0.00,84.00"/>
+        </node>
+        <node name="import_csv1" position="14.00,8.00" prototype="data.import_csv">
+            <port name="file" type="string" value="data.csv"/>
+        </node>
+        <node name="integer1" position="7.00,13.00" prototype="math.integer"/>
+        <node name="lookup1" position="14.00,9.00" prototype="data.lookup">
+            <port name="key" type="string" value="value"/>
+        </node>
+        <node name="max1" position="18.00,10.00" prototype="math.max"/>
+        <node name="rect2" position="4.00,18.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="slice1" position="11.00,12.00" prototype="list.slice"/>
+        <node name="sqrt1" position="14.00,11.00" prototype="math.sqrt"/>
+        <node name="textpath1" position="8.00,16.00" prototype="corevector.textpath">
+            <port name="font_name" type="string" value="Iosevka-Medium"/>
+        </node>
+        <node name="translate1" position="8.00,18.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="0.00,8.00"/>
+        </node>
+        <conn input="count1.list" output="import_csv1"/>
+        <conn input="slice1.list" output="grid1"/>
+        <conn input="slice1.size" output="count1"/>
+        <conn input="lookup1.list" output="import_csv1"/>
+        <conn input="ellipse1.position" output="slice1"/>
+        <conn input="sqrt1.value" output="lookup1"/>
+        <conn input="convert_range1.value" output="sqrt1"/>
+        <conn input="ellipse1.width" output="convert_range1"/>
+        <conn input="ellipse1.height" output="convert_range1"/>
+        <conn input="max1.values" output="lookup1"/>
+        <conn input="convert_range1.source_end" output="max1"/>
+        <conn input="integer1.value" output="lookup1"/>
+        <conn input="textpath1.text" output="integer1"/>
+        <conn input="textpath1.position" output="slice1"/>
+        <conn input="colorize2.shape" output="ellipse1"/>
+        <conn input="colorize1.shape" output="textpath1"/>
+        <conn input="colorize3.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize3"/>
+        <conn input="combine1.list2" output="colorize2"/>
+        <conn input="translate1.shape" output="colorize1"/>
+        <conn input="combine1.list3" output="translate1"/>
+    </node>
+</ndbx>
