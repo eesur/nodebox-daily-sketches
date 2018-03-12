@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="amount" position="-3.00,3.00" prototype="math.number">
+            <port name="value" type="float" value="60.0"/>
+        </node>
+        <node name="colorize1" position="-1.00,10.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#f7772cff"/>
+            <port name="strokeWidth" type="float" value="11.0"/>
+        </node>
+        <node name="colorize2" position="-7.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#fbae17ff"/>
+            <port name="stroke" type="color" value="#151515ff"/>
+        </node>
+        <node name="combine2" position="-3.00,13.00" prototype="list.combine"/>
+        <node name="ellipse1" position="2.00,5.00" prototype="corevector.ellipse"/>
+        <node name="ellipse3" position="6.00,5.00" prototype="corevector.ellipse"/>
+        <node name="line1" position="-1.00,9.00" prototype="corevector.line">
+            <port name="point1" type="point" value="23.00,0.00"/>
+        </node>
+        <node name="make_point1" position="-5.00,8.00" prototype="corevector.make_point">
+            <port name="y" type="float" value="39.0"/>
+        </node>
+        <node name="number1" position="-1.00,3.00" prototype="math.number">
+            <port name="value" type="float" value="541.0"/>
+        </node>
+        <node name="number2" position="5.00,2.00" prototype="math.number">
+            <port name="value" type="float" value="280.0"/>
+        </node>
+        <node name="random_numbers1" position="-4.00,6.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="21.0"/>
+            <port name="end" type="float" value="-43.0"/>
+            <port name="seed" type="int" value="15"/>
+        </node>
+        <node name="rect2" position="-7.00,5.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="resample1" position="2.00,6.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+            <port name="length" type="float" value="1.0"/>
+            <port name="points" type="int" value="60"/>
+        </node>
+        <node name="resample2" position="6.00,7.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+            <port name="length" type="float" value="88.0"/>
+            <port name="points" type="int" value="60"/>
+        </node>
+        <node name="wiggle1" position="3.00,8.00" prototype="corevector.wiggle">
+            <port name="scope" type="string" value="paths"/>
+            <port name="offset" type="point" value="-11.00,378.00"/>
+            <port name="seed" type="int" value="-350"/>
+        </node>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="resample1.shape" output="ellipse1"/>
+        <conn input="ellipse1.width" output="number1"/>
+        <conn input="ellipse1.height" output="number1"/>
+        <conn input="combine2.list2" output="colorize1"/>
+        <conn input="colorize1.shape" output="line1"/>
+        <conn input="line1.point2" output="resample1"/>
+        <conn input="resample1.points" output="amount"/>
+        <conn input="random_numbers1.amount" output="amount"/>
+        <conn input="make_point1.x" output="random_numbers1"/>
+        <conn input="resample2.shape" output="ellipse3"/>
+        <conn input="resample2.points" output="amount"/>
+        <conn input="ellipse3.height" output="number2"/>
+        <conn input="ellipse3.width" output="number2"/>
+        <conn input="wiggle1.shape" output="resample2"/>
+        <conn input="line1.point1" output="wiggle1"/>
+    </node>
+</ndbx>
