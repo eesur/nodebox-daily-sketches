@@ -1,5 +1,12 @@
 [
   {
+    "path": "img-refs/2018-03-12.gif",
+    "name": "2018-03-12.gif",
+    "size": 44743,
+    "extension": ".gif",
+    "type": "file"
+  },
+  {
     "path": "img-refs/2018-02-27.png",
     "name": "2018-02-27.png",
     "size": 118149,
