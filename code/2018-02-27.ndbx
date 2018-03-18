@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine2">
+        <node name="colorize2" position="-7.00,5.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#e0e5daff"/>
+            <port name="stroke" type="color" value="#0f0a01ff"/>
+        </node>
+        <node name="colorize3" position="-4.00,10.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f4353000"/>
+            <port name="stroke" type="color" value="#f43530ff"/>
+            <port name="strokeWidth" type="float" value="3.0"/>
+        </node>
+        <node name="combine2" position="-3.00,15.00" prototype="list.combine"/>
+        <node name="grid1" position="2.00,4.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="13"/>
+            <port name="rows" type="int" value="133"/>
+            <port name="width" type="float" value="679.0"/>
+            <port name="height" type="float" value="492.0"/>
+            <port name="position" type="point" value="-84.83,29.94"/>
+        </node>
+        <node name="multiply3" position="-4.00,-1.00" prototype="math.multiply">
+            <port name="value2" type="float" value="4.0"/>
+        </node>
+        <node name="polygon1" position="-2.00,2.00" prototype="corevector.polygon">
+            <port name="radius" type="float" value="31.0"/>
+            <port name="sides" type="int" value="5"/>
+        </node>
+        <node name="range1" position="-8.00,0.00" prototype="math.range">
+            <port name="start" type="float" value="3.0"/>
+            <port name="end" type="float" value="9.0"/>
+        </node>
+        <node name="rect2" position="-7.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="take_every2" position="-2.00,7.00" prototype="list.take_every">
+            <port name="n" type="int" value="8"/>
+        </node>
+        <node name="translate1" position="-3.00,12.00" prototype="corevector.translate">
+            <port name="translate" type="point" value="85.00,-33.00"/>
+        </node>
+        <node name="translate2" position="-4.00,9.00" prototype="corevector.translate"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine2.list1" output="colorize2"/>
+        <conn input="take_every2.list" output="grid1"/>
+        <conn input="translate2.translate" output="take_every2"/>
+        <conn input="polygon1.sides" output="range1"/>
+        <conn input="multiply3.value1" output="range1"/>
+        <conn input="polygon1.radius" output="multiply3"/>
+        <conn input="colorize3.shape" output="translate2"/>
+        <conn input="translate2.shape" output="polygon1"/>
+        <conn input="translate1.shape" output="colorize3"/>
+        <conn input="combine2.list2" output="translate1"/>
+    </node>
+</ndbx>
