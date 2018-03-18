@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="adc7255e-1c66-45c3-a54e-9658f7b8e538">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="3.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="strokeWidth" type="float" value="1.0"/>
+        </node>
+        <node name="colorize5" position="-2.00,6.00" prototype="corevector.colorize">
+            <port name="stroke" type="color" value="#e7b300ff"/>
+        </node>
+        <node name="combine1" position="2.00,8.00" prototype="list.combine"/>
+        <node name="count1" position="8.00,0.00" prototype="list.count"/>
+        <node name="ellipse1" position="3.00,5.00" prototype="corevector.ellipse"/>
+        <node name="import_svg1" position="3.00,-1.00" prototype="corevector.import_svg">
+            <port name="file" type="string" value="vaheguru-svg.svg"/>
+        </node>
+        <node name="make_strings1" position="10.00,4.00" prototype="string.make_strings">
+            <port name="string" type="string" value="#a6cee3,#1f78b4,#b2df8a,#33a02c,#fb9a99,#e31a1c,#fdbf6f,#ff7f00,#cab2d6,#6a3d9a"/>
+            <port name="separator" type="string" value=","/>
+        </node>
+        <node name="random_numbers1" position="10.00,2.00" prototype="math.random_numbers">
+            <port name="start" type="float" value="1.0"/>
+            <port name="end" type="float" value="13.0"/>
+        </node>
+        <node name="rect3" position="-2.00,4.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="scale1" position="3.00,1.00" prototype="corevector.scale">
+            <port name="scale" type="point" value="130.00,130.00"/>
+        </node>
+        <node name="scatter1" position="3.00,3.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="4129"/>
+        </node>
+        <conn input="colorize5.shape" output="rect3"/>
+        <conn input="combine1.list1" output="colorize5"/>
+        <conn input="ellipse1.position" output="scatter1"/>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="colorize1.stroke" output="make_strings1"/>
+        <conn input="scale1.shape" output="import_svg1"/>
+        <conn input="scatter1.shape" output="scale1"/>
+        <conn input="count1.list" output="scatter1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="ellipse1.width" output="random_numbers1"/>
+        <conn input="ellipse1.height" output="random_numbers1"/>
+    </node>
+</ndbx>
