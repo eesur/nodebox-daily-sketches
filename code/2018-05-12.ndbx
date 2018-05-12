@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="21" type="file" uuid="6e57e8be-b516-42fa-9f98-1d9e9b0493a0">
+    <property name="canvasHeight" value="600"/>
+    <property name="canvasWidth" value="800"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="4.00,19.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#00000000"/>
+            <port name="stroke" type="color" value="#3dbd5dff"/>
+            <port name="strokeWidth" type="float" value="2.0"/>
+        </node>
+        <node name="colorize2" position="-7.00,15.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#f4f4f4ff"/>
+        </node>
+        <node name="combine1" position="1.00,21.00" prototype="list.combine"/>
+        <node name="ellipse1" position="-1.00,13.00" prototype="corevector.ellipse"/>
+        <node name="make_numbers1" position="-3.00,11.00" prototype="math.make_numbers">
+            <port name="string" type="string" value="4, 5, 8, 30, 200, 6, 300, 610"/>
+            <port name="separator" type="string" value=", "/>
+        </node>
+        <node name="number1" position="6.00,10.00" prototype="math.number">
+            <port name="value" type="float" value="100.0"/>
+        </node>
+        <node name="number2" position="4.00,15.00" prototype="math.number">
+            <port name="value" type="float" value="10.0"/>
+        </node>
+        <node name="rect1" position="0.00,17.00" prototype="corevector.rect"/>
+        <node name="rect2" position="-7.00,14.00" prototype="corevector.rect">
+            <port name="width" type="float" value="800.0"/>
+            <port name="height" type="float" value="600.0"/>
+        </node>
+        <node name="resample1" position="-1.00,15.00" prototype="corevector.resample">
+            <port name="method" type="string" value="amount"/>
+            <port name="points" type="int" value="23"/>
+        </node>
+        <node name="sqrt1" position="-4.00,13.00" prototype="math.sqrt"/>
+        <conn input="colorize2.shape" output="rect2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="ellipse1.width" output="number1"/>
+        <conn input="ellipse1.height" output="number1"/>
+        <conn input="number1.value" output="make_numbers1"/>
+        <conn input="combine1.list2" output="colorize1"/>
+        <conn input="resample1.shape" output="ellipse1"/>
+        <conn input="rect1.position" output="resample1"/>
+        <conn input="colorize1.shape" output="rect1"/>
+        <conn input="rect1.width" output="number2"/>
+        <conn input="rect1.height" output="number2"/>
+        <conn input="sqrt1.value" output="make_numbers1"/>
+        <conn input="resample1.points" output="sqrt1"/>
+        <conn input="number2.value" output="sqrt1"/>
+    </node>
+</ndbx>
